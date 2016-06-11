@@ -15,7 +15,7 @@ import {ImageCropperDataShare} from './imageCropperDataShare';
     <span class="ng2-imgcrop">
       <canvas #cropcanvas
               (mousedown)="onMouseDown($event)"
-              (mouseup)="onMouseUp($event)"
+              (window:mouseup)="onMouseUp($event)"
               (mousemove)="onMouseMove($event)"
               (touchmove)="onTouchMove($event)"
               (touchend)="onTouchEnd($event)">
