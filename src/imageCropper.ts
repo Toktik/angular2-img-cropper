@@ -184,8 +184,7 @@ export class ImageCropper extends ImageCropperModel {
       width: number, height: number,
       croppedWidth: number, croppedHeight: number,
       keepAspect: boolean = true, touchRadius: number = 50,
-
-      minWidth: number = 50, minHeight: number = 50) {
+      minWidth: number = 5, minHeight: number = 5) {
 
     super();
 
@@ -297,11 +296,24 @@ export class ImageCropper extends ImageCropperModel {
       }
       this.ratioW = w / this.srcImage.width;
       this.ratioH = h / this.srcImage.height;
+
+      // var img = new Image();
+      // img.src = '/assets/img/chess-pattern.png';
+      // var ptrn = ctx.createPattern(img, 'repeat');
+      // ctx.fillStyle = ptrn;
+      // ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
+
       if (canvasAspect < sourceAspect) {
         this.drawImageIOSFix(ctx, this.srcImage, 0, 0, this.srcImage.width, this.srcImage.height, this.buffer.width / 2 - w / 2, 0, w, h);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(130,130,130,1)';
+        ctx.strokeRect(this.buffer.width / 2 - w / 2 - 2, 0, w + 2, h);
       }
       else {
         this.drawImageIOSFix(ctx, this.srcImage, 0, 0, this.srcImage.width, this.srcImage.height, 0, this.buffer.height / 2 - h / 2, w, h);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(130,130,130,1)';
+        ctx.strokeRect(0, this.buffer.height / 2 - h / 2 - 2, w, h + 2);
       }
       this.buffer.getContext('2d').drawImage(this.canvas, 0, 0, this.canvasWidth, this.canvasHeight);
       ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
