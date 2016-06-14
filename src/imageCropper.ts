@@ -307,13 +307,13 @@ export class ImageCropper extends ImageCropperModel {
         this.drawImageIOSFix(ctx, this.srcImage, 0, 0, this.srcImage.width, this.srcImage.height, this.buffer.width / 2 - w / 2, 0, w, h);
         ctx.lineWidth = 2;
         ctx.strokeStyle = 'rgba(130,130,130,1)';
-        ctx.strokeRect(this.buffer.width / 2 - w / 2 - 2, 0, w + 2, h);
+        ctx.strokeRect(this.buffer.width / 2 - w / 2 - 2, 0, w + 3, h);
       }
       else {
         this.drawImageIOSFix(ctx, this.srcImage, 0, 0, this.srcImage.width, this.srcImage.height, 0, this.buffer.height / 2 - h / 2, w, h);
         ctx.lineWidth = 2;
         ctx.strokeStyle = 'rgba(130,130,130,1)';
-        ctx.strokeRect(0, this.buffer.height / 2 - h / 2 - 2, w, h + 2);
+        ctx.strokeRect(0, this.buffer.height / 2 - h / 2 - 2, w, h + 3);
       }
       this.buffer.getContext('2d').drawImage(this.canvas, 0, 0, this.canvasWidth, this.canvasHeight);
       ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
