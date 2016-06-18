@@ -78,11 +78,11 @@ var ImageCropperComponent = (function () {
     };
     __decorate([
         core_1.ViewChild('cropcanvas'), 
-        __metadata('design:type', (typeof (_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object)
+        __metadata('design:type', core_1.ElementRef)
     ], ImageCropperComponent.prototype, "cropcanvas", void 0);
     __decorate([
         core_1.Output(), 
-        __metadata('design:type', (typeof (_b = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _b) || Object)
+        __metadata('design:type', core_1.EventEmitter)
     ], ImageCropperComponent.prototype, "onCrop", void 0);
     ImageCropperComponent = __decorate([
         core_1.Component({
@@ -90,10 +90,9 @@ var ImageCropperComponent = (function () {
             template: "\n    <span class=\"ng2-imgcrop\">\n      <canvas #cropcanvas\n              (mousedown)=\"onMouseDown($event)\"\n              (window:mouseup)=\"onMouseUp($event)\"\n              (mousemove)=\"onMouseMove($event)\"\n              (touchmove)=\"onTouchMove($event)\"\n              (touchend)=\"onTouchEnd($event)\">\n      </canvas>\n    </span>\n  ",
             inputs: ['srcImage', 'settings']
         }), 
-        __metadata('design:paramtypes', [(typeof (_c = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _c) || Object])
+        __metadata('design:paramtypes', [core_1.Renderer])
     ], ImageCropperComponent);
     return ImageCropperComponent;
-    var _a, _b, _c;
 }());
 exports.ImageCropperComponent = ImageCropperComponent;
 var CropperSettings = (function () {
@@ -228,15 +227,9 @@ var ImageCropper = (function (_super) {
             // ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
             if (canvasAspect < sourceAspect) {
                 this.drawImageIOSFix(ctx, this.srcImage, 0, 0, this.srcImage.width, this.srcImage.height, this.buffer.width / 2 - w / 2, 0, w, h);
-                ctx.lineWidth = 2;
-                ctx.strokeStyle = 'rgba(130,130,130,1)';
-                ctx.strokeRect(this.buffer.width / 2 - w / 2 - 2, 0, w + 3, h);
             }
             else {
                 this.drawImageIOSFix(ctx, this.srcImage, 0, 0, this.srcImage.width, this.srcImage.height, 0, this.buffer.height / 2 - h / 2, w, h);
-                ctx.lineWidth = 2;
-                ctx.strokeStyle = 'rgba(130,130,130,1)';
-                ctx.strokeRect(0, this.buffer.height / 2 - h / 2 - 2, w, h + 3);
             }
             this.buffer.getContext('2d').drawImage(this.canvas, 0, 0, this.canvasWidth, this.canvasHeight);
             ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
